@@ -6,6 +6,7 @@ class Awsprofile
   def initialize(profilename)
     # Exception for using roles, this can probably be done via automatic detection
     # But this is nice and simple
+    @config = Hash.new()
     if profilename == "role"
       # Get the current region from the metadata service
       @config["region"] = open("http://169.254.169.254/latest/meta-data/placement/availability-zone").each.first(1)[0][0..-2]
